@@ -1,153 +1,164 @@
-<div class="status">
-            Çok Yakında Sizlerle!
-        </div>
-
-        <div class="pricing-table">
-            
-            <div class="pricing-column">
-                <h2>Başlangıç</h2>
-                <div class="price">€19<span class="period">/ay</span></div>
-                <ul class="features">
-                    <li>50 SKU'ya Kadar Takip</li>
-                    <li>Fiyat Senkronizasyonu</li>
-                    <li>Stok Senkronizasyonu</li>
-                    <li>E-posta Desteği</li>
-                </ul>
-                <a href="#" class="buy-button">Hemen Başla</a>
-            </div>
-
-            <div class="pricing-column popular">
-                <span class="popular-tag">Popüler</span>
-                <h2>Profesyonel</h2>
-                <div class="price">€49<span class="period">/ay</span></div>
-                <ul class="features">
-                    <li>500 SKU'ya Kadar Takip</li>
-                    <li>Fiyat Senkronizasyonu</li>
-                    <li>Stok Senkronizasyonu</li>
-                    <li>Öncelikli E-posta Desteği</li>
-                </ul>
-                <a href="#" class="buy-button">Hemen Başla</a>
-            </div>
-
-            <div class="pricing-column">
-                <h2>İşletme</h2>
-                <div class="price">€99<span class="period">/ay</span></div>
-                <ul class="features">
-                    <li>Sınırsız SKU Takibi</li>
-                    <li>Fiyat Senkronizasyonu</li>
-                    <li>Stok Senkronizasyonu</li>
-                    <li>Telefon & E-posta Desteği</li>
-                </ul>
-                <a href="#" class="buy-button">Hemen Başla</a>
-            </div>
-
-        </div>
-        <hr>
-        ```
-
-#### **1.2. `style.css` Dosyasını Güncelleyin:**
-
-Şimdi bu yeni tabloyu güzel göstermek için `style.css` dosyanızın en altına aşağıdaki CSS kodlarını ekleyin.
-
-```css
-/* ... önceki CSS kodları ... */
-
-/* Fiyatlandırma Tablosu Stilleri */
-.pricing-table {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 50px;
-    flex-wrap: wrap; /* Mobil cihazlarda alt alta gelmesi için */
+:root {
+    --primary-purple: #8A2BE2; /* Logonuzdaki mor renk */
+    --accent-cyan: #00BFFF;   /* Logonuzdaki cyan renk */
+    --dark-bg: #121212;      /* Koyu arkaplan */
+    --card-bg: #1E1E1E;      /* Kartların arkaplanı */
+    --text-primary: #EAEAEA;   /* Ana metin rengi */
+    --text-secondary: #B0B0B0; /* İkincil metin rengi */
 }
 
-.pricing-column {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 60px;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    font-weight: 300;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.pricing-card {
+    background: var(--card-bg);
+    border: 1px solid #333;
+    border-radius: 12px;
     padding: 30px;
-    width: 250px;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s, box-shadow 0.3s;
-    position: relative; /* "Popüler" etiketi için */
+    position: relative;
+    overflow: hidden;
 }
 
-.pricing-column:hover {
+.pricing-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-.pricing-column h2 {
-    font-size: 1.5em;
-    margin-top: 0;
+.card-header h3 {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin: 0 0 20px 0;
 }
 
-.price {
-    font-size: 2.8em;
+.card-price {
+    font-size: 3.5em;
     font-weight: 700;
-    color: #16a085;
-    margin: 20px 0;
+    color: var(--accent-cyan);
+    margin-bottom: 30px;
 }
 
-.price .period {
+.card-price sup {
     font-size: 0.4em;
     font-weight: 400;
-    color: #7f8c8d;
+    vertical-align: top;
+    top: 15px;
 }
 
-.features {
+.card-price span {
+    font-size: 0.3em;
+    font-weight: 300;
+    color: var(--text-secondary);
+}
+
+.card-features {
     list-style: none;
     padding: 0;
-    margin: 20px 0;
+    margin: 0 0 30px 0;
     text-align: left;
-    flex-grow: 1; /* Butonların aynı hizada kalmasını sağlar */
+    flex-grow: 1;
+    color: var(--text-secondary);
 }
 
-.features li {
+.card-features li {
     margin-bottom: 15px;
     padding-left: 25px;
     position: relative;
 }
 
-.features li::before {
-    content: '✔';
-    color: #16a085;
+.card-features li::before {
+    content: '✓';
+    color: var(--accent-cyan);
     position: absolute;
     left: 0;
-    font-weight: bold;
 }
 
-.buy-button {
-    background-color: #2980b9;
-    color: white;
+.card-button {
+    background-color: transparent;
+    color: var(--accent-cyan);
+    border: 2px solid var(--accent-cyan);
     padding: 12px 20px;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
+    border-radius: 8px;
+    font-weight: 600;
     display: block;
-    margin-top: auto; /* Butonları en alta sabitler */
-    transition: background-color 0.3s;
+    margin-top: auto;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.buy-button:hover {
-    background-color: #3498db;
+.card-button:hover {
+    background-color: var(--accent-cyan);
+    color: var(--dark-bg);
 }
 
-/* Popüler Paket Stilleri */
-.pricing-column.popular {
-    border-color: #16a085;
-    border-width: 2px;
+/* Popüler Paket */
+.pricing-card.popular {
+    border-color: var(--primary-purple);
+    transform: scale(1.05);
 }
 
-.popular .popular-tag {
+.pricing-card.popular .card-button {
+    background-color: var(--primary-purple);
+    border-color: var(--primary-purple);
+    color: #fff;
+}
+
+.pricing-card.popular .card-button:hover {
+    background-color: #9932CC; /* Morun biraz açığı */
+    border-color: #9932CC;
+}
+
+.popular-tag {
     position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #16a085;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 50px;
+    top: 15px;
+    right: -45px;
+    background: var(--primary-purple);
+    color: #fff;
+    padding: 5px 40px;
     font-size: 0.8em;
-    font-weight: bold;
+    font-weight: 700;
+    transform: rotate(45deg);
 }
