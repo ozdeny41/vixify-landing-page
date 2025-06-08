@@ -15,6 +15,15 @@ body {
     padding: 40px 20px;
 }
 
+.logo {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 160px;
+    height: auto;
+    z-index: 100;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -25,14 +34,6 @@ header {
     margin-bottom: 60px;
 }
 
-.logo {
-    position: absolute; /* Logoyu sayfanın sol üstüne sabitlemek için */
-    top: 40px;          /* Sayfanın üst kenarından boşluk */
-    left: 40px;         /* Sayfanın sol kenarından boşluk */
-    width: 160px;       /* Logoyu büyüttük (120px'den 160px'e) */
-    height: auto;
-    z-index: 100;       /* Diğer elementlerin üzerinde kalmasını sağlar */
-}
 h1 {
     font-size: 2.8em;
     font-weight: 700;
@@ -96,6 +97,17 @@ h1 {
     color: var(--text-secondary);
 }
 
+.card-price.price-text {
+    font-size: 1.3em;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .card-features {
     list-style: none;
     padding: 0;
@@ -136,7 +148,6 @@ h1 {
     color: var(--dark-bg);
 }
 
-/* Popüler Paket */
 .pricing-card.popular {
     border-color: var(--primary-purple);
     transform: scale(1.05);
@@ -149,7 +160,7 @@ h1 {
 }
 
 .pricing-card.popular .card-button:hover {
-    background-color: #9932CC; /* Morun biraz açığı */
+    background-color: #9932CC;
     border-color: #9932CC;
 }
 
@@ -163,4 +174,31 @@ h1 {
     font-size: 0.8em;
     font-weight: 700;
     transform: rotate(45deg);
+}
+
+/* Mobil Cihazlar İçin Ayarlar */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    header {
+        text-align: left;
+    }
+    
+    .logo {
+        position: static;
+        width: 120px;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        text-align: left;
+    }
+
+    .subtitle {
+        text-align: left;
+        font-size: 1em;
+    }
 }
