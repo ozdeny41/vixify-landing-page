@@ -26,11 +26,13 @@ header {
 }
 
 .logo {
-    width: 120px;
+    position: absolute; /* Logoyu sayfanın sol üstüne sabitlemek için */
+    top: 40px;          /* Sayfanın üst kenarından boşluk */
+    left: 40px;         /* Sayfanın sol kenarından boşluk */
+    width: 160px;       /* Logoyu büyüttük (120px'den 160px'e) */
     height: auto;
-    margin-bottom: 20px;
+    z-index: 100;       /* Diğer elementlerin üzerinde kalmasını sağlar */
 }
-
 h1 {
     font-size: 2.8em;
     font-weight: 700;
