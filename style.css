@@ -1,16 +1,18 @@
 :root {
-    --primary-purple: #8A2BE2; /* Logonuzdaki mor renk */
-    --accent-cyan: #00BFFF;   /* Logonuzdaki cyan renk */
-    --dark-bg: #121212;      /* Koyu arkaplan */
-    --card-bg: #1E1E1E;      /* Kartların arkaplanı */
-    --text-primary: #EAEAEA;   /* Ana metin rengi */
-    --text-secondary: #B0B0B0; /* İkincil metin rengi */
+    /* Renk Paletini Açık Tema İçin Güncelliyoruz */
+    --primary-purple: #8A2BE2; /* Ana Vurgu Rengi (Mor) */
+    --accent-cyan: #007BFF;   /* İkincil Vurgu Rengi (Daha kurumsal bir mavi tonu) */
+    --light-bg: #F8F9FA;     /* Çok hafif kırık beyaz arkaplan */
+    --card-bg: #FFFFFF;      /* Kartların arkaplanı (Saf Beyaz) */
+    --text-dark: #212529;     /* Ana metin rengi (Koyu Gri) */
+    --text-light: #6c757d;    /* İkincil metin rengi (Açık Gri) */
+    --border-color: #dee2e6;  /* Kenarlık rengi */
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--dark-bg);
-    color: var(--text-primary);
+    background-color: var(--light-bg);
+    color: var(--text-dark);
     margin: 0;
     padding: 40px 20px;
 }
@@ -32,18 +34,20 @@ body {
 
 header {
     margin-bottom: 60px;
+    padding-top: 80px; /* Logonun altında kalmaması için başlığa üstten boşluk */
 }
 
 h1 {
     font-size: 2.8em;
     font-weight: 700;
     margin-bottom: 10px;
+    color: var(--text-dark);
 }
 
 .subtitle {
     font-size: 1.2em;
     font-weight: 300;
-    color: var(--text-secondary);
+    color: var(--text-light);
     max-width: 600px;
     margin: 0 auto;
 }
@@ -56,7 +60,7 @@ h1 {
 
 .pricing-card {
     background: var(--card-bg);
-    border: 1px solid #333;
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 30px;
     display: flex;
@@ -64,23 +68,25 @@ h1 {
     transition: transform 0.3s, box-shadow 0.3s;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .pricing-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .card-header h3 {
     font-size: 1.4em;
     font-weight: 600;
     margin: 0 0 20px 0;
+    color: var(--text-dark);
 }
 
 .card-price {
     font-size: 3.5em;
     font-weight: 700;
-    color: var(--accent-cyan);
+    color: var(--text-dark);
     margin-bottom: 30px;
 }
 
@@ -89,18 +95,19 @@ h1 {
     font-weight: 400;
     vertical-align: top;
     top: 15px;
+    color: var(--text-light);
 }
 
 .card-price span {
     font-size: 0.3em;
     font-weight: 300;
-    color: var(--text-secondary);
+    color: var(--text-light);
 }
 
 .card-price.price-text {
     font-size: 1.3em;
     font-weight: 400;
-    color: var(--text-secondary);
+    color: var(--text-light);
     line-height: 1.4;
     height: 100px;
     display: flex;
@@ -114,7 +121,7 @@ h1 {
     margin: 0 0 30px 0;
     text-align: left;
     flex-grow: 1;
-    color: var(--text-secondary);
+    color: var(--text-light);
 }
 
 .card-features li {
@@ -131,8 +138,8 @@ h1 {
 }
 
 .card-button {
-    background-color: transparent;
-    color: var(--accent-cyan);
+    background-color: var(--accent-cyan);
+    color: #fff;
     border: 2px solid var(--accent-cyan);
     padding: 12px 20px;
     text-decoration: none;
@@ -140,17 +147,18 @@ h1 {
     font-weight: 600;
     display: block;
     margin-top: auto;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
 .card-button:hover {
-    background-color: var(--accent-cyan);
-    color: var(--dark-bg);
+    background-color: #0056b3; /* Mavinin biraz daha koyu tonu */
+    border-color: #0056b3;
 }
 
+/* Popüler Paket */
 .pricing-card.popular {
     border-color: var(--primary-purple);
-    transform: scale(1.05);
+    border-width: 2px;
 }
 
 .pricing-card.popular .card-button {
@@ -160,8 +168,8 @@ h1 {
 }
 
 .pricing-card.popular .card-button:hover {
-    background-color: #9932CC;
-    border-color: #9932CC;
+    background-color: #7A1CC2; /* Morun biraz daha koyusu */
+    border-color: #7A1CC2;
 }
 
 .popular-tag {
@@ -184,12 +192,14 @@ h1 {
 
     header {
         text-align: left;
+        padding-top: 80px; /* Mobil için de boşluk bırakalım */
     }
     
     .logo {
-        position: static;
+        position: absolute; /* Mobilde de sol üstte kalsın ama boşlukları ayarlayalım */
+        top: 20px;
+        left: 20px;
         width: 120px;
-        margin-bottom: 20px;
     }
 
     h1 {
