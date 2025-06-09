@@ -19,8 +19,8 @@ body {
 
 .logo {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 25px;      /* Yeni, daha yakın konum */
+    left: 25px;     /* Yeni, daha yakın konum */
     width: 160px;
     height: auto;
     z-index: 100;
@@ -196,9 +196,9 @@ h1 {
     }
     
     .logo {
-        position: absolute; /* Mobilde de sol üstte kalsın ama boşlukları ayarlayalım */
-        top: 20px;
-        left: 20px;
+        position: absolute;
+        top: 15px;      /* Yeni, daha yakın mobil konum */
+        left: 15px;     /* Yeni, daha yakın mobil konum */
         width: 120px;
     }
 
