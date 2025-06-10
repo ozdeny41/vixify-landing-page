@@ -6,20 +6,20 @@
     <title>Vixify Güvenli Ödeme</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-purple: #8A2BE2;
-            --accent-cyan: #007BFF;
-            --light-bg: #f0f2f5;
+            --primary-accent: #6D28D9; /* Morun şık bir tonu */
+            --light-bg: #f7f8fc;
             --widget-bg: #FFFFFF;
-            --text-dark: #334155;
+            --text-dark: #1e293b;
             --text-light: #64748b;
             --border-color: #e2e8f0;
+            --success-color: #10b981;
         }
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--light-bg);
             color: var(--text-dark);
             display: flex;
@@ -31,85 +31,98 @@
         }
         .checkout-widget {
             background-color: var(--widget-bg);
-            border-radius: 16px;
-            box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            max-width: 420px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.04);
+            max-width: 400px;
             width: 100%;
-            border: 1px solid var(--border-color);
         }
         .widget-header {
             text-align: center;
-            padding: 25px 30px;
+            padding: 20px 25px;
             border-bottom: 1px solid var(--border-color);
         }
         .logo {
-            width: 100px;
+            width: 90px;
             height: auto;
         }
         .widget-body {
-            padding: 30px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
         .form-group h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.1em;
-            font-weight: 600;
+            margin: 0 0 8px 0;
+            font-size: 0.9em;
+            font-weight: 500;
             color: var(--text-dark);
-        }
-        select#price-select, .StripeElement {
-            width: 100%;
-            padding: 12px 15px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            font-size: 1em;
-            font-family: 'Poppins', sans-serif;
-            transition: border-color 0.3s, box-shadow 0.3s;
         }
         select#price-select {
-             cursor: pointer;
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 0.95em;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            background-color: #fff;
         }
-        select#price-select:focus, .StripeElement--focus {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        #payment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .StripeElement {
+            width: 100%;
+            padding: 11px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: white;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .StripeElement--focus {
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 2px rgba(109, 40, 217, 0.1);
             outline: none;
         }
+        .card-details-row {
+            display: flex;
+            gap: 15px;
+        }
+        .card-details-row > div {
+            flex: 1;
+        }
         #submit-button {
-            background: linear-gradient(90deg, var(--accent-cyan) 0%, var(--primary-purple) 100%);
+            background-color: var(--primary-accent);
             color: white;
             border: none;
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: 600;
             cursor: pointer;
-            transition: opacity 0.3s;
+            transition: background-color 0.3s;
             width: 100%;
+            margin-top: 10px;
         }
         #submit-button:hover {
-            opacity: 0.9;
-        }
-        #submit-button:disabled {
-            background: #cbd5e1;
-            cursor: not-allowed;
+            background-color: #5b21b6;
         }
         #card-errors {
-            color: #ef4444;
-            font-size: 0.9em;
+            color: #dc2626;
+            font-size: 0.85em;
         }
         #result {
-            margin-top: 20px;
-            background-color: #f8fafc;
+            margin-top: 15px;
+            background-color: #f1f5f9;
             border: 1px solid var(--border-color);
             color: var(--text-dark);
-            padding: 15px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 6px;
             font-family: monospace;
-            font-size: 0.85em;
+            font-size: 0.8em;
             word-wrap: break-word;
-            line-height: 1.6;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -133,53 +146,63 @@
             
             <form id="payment-form">
                 <div class="form-group">
-                    <h3>Ödeme Bilgileri</h3>
-                    <div id="card-element">
-                        </div>
+                    <h3>Kart Bilgileri</h3>
+                    <div id="card-number-element" class="StripeElement"></div>
                 </div>
-                <button id="submit-button" type="submit">€199 Değerinde Abone Ol</button>
+                <div class="card-details-row">
+                    <div class="form-group">
+                        <div id="card-expiry-element" class="StripeElement"></div>
+                    </div>
+                    <div class="form-group">
+                        <div id="card-cvc-element" class="StripeElement"></div>
+                    </div>
+                </div>
+                <button id="submit-button" type="submit">Abone Ol</button>
                 <div id="card-errors" role="alert"></div>
             </form>
+
             <pre id="result" style="display: none;"></pre>
         </div>
     </div>
 
     <script src="https://js.stripe.com/v3/"></script>
     <script>
-        // Sayfa yüklendiğinde URL'deki plan parametresini kontrol et
         window.onload = () => {
             const urlParams = new URLSearchParams(window.location.search);
             const priceIdFromUrl = urlParams.get('plan');
             const priceSelect = document.getElementById('price-select');
-
             if (priceIdFromUrl && priceSelect.querySelector(`[value="${priceIdFromUrl}"]`)) {
                 priceSelect.value = priceIdFromUrl;
-                updateSubmitButtonText(); // Buton metnini de güncelle
             }
+            updateSubmitButtonText();
         };
 
-        // ▼▼▼ KENDİ PUBLISHABLE KEY ANAHTARINIZI BURAYA GİRİN ▼▼▼ 
-        const stripe = Stripe('pk_test_51RCMx0Kl9OcBA8FDNIQ3bJofzCEFqusmDxVe17lEvXiCrKonJ71UUJs97ObSjMPj7t3Pf9hsgTZmKLW9pahe6EGi00MYSYz9JF');
+        const stripe = Stripe('51RCMx0Kl9OcBA8FDNIQ3bJofzCEFqusmDxVe17lEvXiCrKonJ71UUJs97ObSjMPj7t3Pf9hsgTZmKLW9pahe6EGi00MYSYz9JF', {
+            // Stripe Link butonunu devre dışı bırakmak için
+            link_authentication: 'never' 
+        });
 
         const elements = stripe.elements();
-        const cardElement = elements.create('card', {
-             style: {
-                base: {
-                    color: '#32325d',
-                    fontFamily: '"Poppins", sans-serif',
-                    fontSmoothing: 'antialiased',
-                    fontSize: '16px',
-                    '::placeholder': {
-                        color: '#aab7c4'
-                    }
-                },
-                invalid: {
-                    color: '#fa755a',
-                    iconColor: '#fa755a'
-                }
-            }
-        });
-        cardElement.mount('#card-element');
+        const style = {
+            base: {
+                color: '#32325d',
+                fontFamily: '"Inter", sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': { color: '#aab7c4' }
+            },
+            invalid: { color: '#fa755a', iconColor: '#fa755a' }
+        };
+
+        // Ayrı kart elemanları oluşturuyoruz
+        const cardNumber = elements.create('cardNumber', { style: style });
+        cardNumber.mount('#card-number-element');
+
+        const cardExpiry = elements.create('cardExpiry', { style: style });
+        cardExpiry.mount('#card-expiry-element');
+
+        const cardCvc = elements.create('cardCvc', { style: style });
+        cardCvc.mount('#card-cvc-element');
 
         const form = document.getElementById('payment-form');
         const submitButton = document.getElementById('submit-button');
@@ -187,18 +210,14 @@
         const priceSelect = document.getElementById('price-select');
         const resultElement = document.getElementById('result');
 
-        // Dropdown değiştiğinde buton metnini güncelle
         function updateSubmitButtonText() {
             const selectedOption = priceSelect.options[priceSelect.selectedIndex];
-            // Metinden fiyatı çekmek için (örn: "Vixify Micro (€49/ay)")
             const priceText = selectedOption.text.match(/€\d+/);
-            if(priceText) {
+            if (priceText) {
                 submitButton.textContent = `${priceText[0]} Değerinde Abone Ol`;
             }
         }
         priceSelect.addEventListener('change', updateSubmitButtonText);
-        updateSubmitButtonText(); // Sayfa ilk yüklendiğinde de çalıştır
-
 
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
@@ -206,7 +225,7 @@
 
             const { paymentMethod, error } = await stripe.createPaymentMethod({
                 type: 'card',
-                card: cardElement,
+                card: cardNumber, // Ana referans olarak kart numarası elemanını kullanıyoruz
             });
 
             if (error) {
@@ -214,8 +233,9 @@
                 submitButton.disabled = false;
             } else {
                 cardErrors.textContent = '';
-                resultElement.textContent = `Ödeme Metodu ID'si başarıyla oluşturuldu: ${paymentMethod.id}\nSeçilen Fiyat ID'si: ${priceSelect.value}\n\nBu bilgiler şimdi sunucuya gönderilerek abonelik başlatılacak.`;
+                resultElement.textContent = `Ödeme Metodu ID'si: ${paymentMethod.id}\nSeçilen Fiyat ID'si: ${priceSelect.value}`;
                 resultElement.style.display = 'block';
+                // Sunucuya gönderme kodunuz burada olacak
             }
         });
     </script>
