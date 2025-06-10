@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vixify Abonelik</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Genel Stil Ayarları */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .payment-container {
+            display: flex;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 800px;
+            width: 100%;
+        }
+        /* Sol Taraf - Paket Seçimi */
+        .plan-selection {
+            background-color: #fdfdfe;
+            padding: 40px;
+            width: 45%;
+            border-right: 1px solid #eef2f5;
+        }
+        .plan-selection h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+        select#price-select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+        }
+        /* Sağ Taraf - Ödeme Formu */
+        .payment-form {
+            padding: 40px;
+            width: 55%;
+        }
+        .payment-form h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+        #payment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        #card-element {
+            border: 1px solid #ccc;
+            padding: 12px;
+            border-radius: 8px;
+        }
+        #submit-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #submit-button:hover {
+            background-color: #0056b3;
+        }
+        #submit-button:disabled {
+            background-color: #a0a0a0;
+            cursor: not-allowed;
+        }
+        #card-errors {
+            color: #fa755a;
+            font-size: 0.9em;
+        }
+        /* Sonuç Alanı */
+        #result {
+            margin-top: 20px;
+            background-color: #222;
+            color: #39FF14;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            word-wrap: break-word;
+        }
+        /* Mobil Uyum */
+        @media (max-width: 768px) {
+            .payment-container {
+                flex-direction: column;
+            }
+            .plan-selection, .payment-form {
+                width: auto;
+            }
+            .plan-selection {
+                border-right: none;
+                border-bottom: 1px solid #eef2f5;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="payment-container">
+        <div class="plan-selection">
+            <h2>1. Aboneliğinizi Seçin</h2>
+            <select id="price-select">
+                <option value="price_1PGjJqxxxxxxxxxxxxxx">Vixify Micro (€49/ay)</option>
+                <option value="price_1PGjKxxxxxxxxxxxxxxx">Vixify Starter (€99/ay)</option>
+                <option value="price_1PGjLxxxxxxxxxxxxxxx" selected>Vixify Business (€199/ay)</option>
+                </select>
+        </div>
+
+        <div class="payment-form">
+            <h2>2. Ödeme Bilgileri</h2>
+            <form id="payment-form">
+                <div id="card-element">
+                    </div>
+                <button id="submit-button" type="submit">Abone Ol</button>
+                <div id="card-errors" role="alert"></div>
+            </form>
+            <pre id="result" style="display: none;"></pre>
+        </div>
+    </div>
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+        // ▼▼▼ DEĞİŞTİR ▼▼▼ 
+        // Buraya kendi Stripe "Publishable Key" anahtarınızı yapıştırın
+        const stripe = Stripe('pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+
+        const elements = stripe.elements();
+        const cardElement = elements.create('card');
+        cardElement.mount('#card-element');
+
+        const form = document.getElementById('payment-form');
+        const submitButton = document.getElementById('submit-button');
+        const cardErrors = document.getElementById('card-errors');
+        const priceSelect = document.getElementById('price-select');
+        const resultElement = document.getElementById('result');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            submitButton.disabled = true; // Butonu tekrar tıklanmaya karşı kilitle
+
+            // Stripe'dan güvenli ödeme metodu token'ı al
+            const { paymentMethod, error } = await stripe.createPaymentMethod({
+                type: 'card',
+                card: cardElement,
+            });
+
+            if (error) {
+                // Hata varsa göster ve butonu tekrar aktif et
+                cardErrors.textContent = error.message;
+                submitButton.disabled = false;
+            } else {
+                // Hata yoksa, sonucu ekranda göster
+                cardErrors.textContent = '';
+                resultElement.textContent = `Ödeme Metodu ID'si başarıyla oluşturuldu: ${paymentMethod.id}\nSeçilen Fiyat ID'si: ${priceSelect.value}\n\nBu bilgiler şimdi sunucuya gönderilerek abonelik başlatılacak.`;
+                resultElement.style.display = 'block';
+
+                // --- GERÇEK PROJE İÇİN SONRAKİ ADIM ---
+                // Burada, `paymentMethod.id` ve `priceSelect.value` değerlerini
+                // fetch() kullanarak kendi sunucunuza (Flask app) göndermeniz gerekir.
+                // Sunucunuz bu bilgilerle Stripe'ta aboneliği oluşturacaktır.
+            }
+        });
+    </script>
+
+</body>
+</html>
