@@ -42,7 +42,6 @@
             border-bottom: 1px solid var(--border-color);
         }
         .logo {
-            /* Logo boyutu daha da büyütüldü */
             width: 160px; 
             height: auto;
         }
@@ -122,7 +121,7 @@
                 flex-direction: column; 
             }
             .logo {
-                width: 130px; /* Mobilde logoyu biraz daha kompakt tutalım */
+                width: 130px; 
             }
         }
     </style>
@@ -131,7 +130,7 @@
 
     <div class="checkout-widget">
         <div class="widget-header">
-            <img src="vixify-logo.png" alt="Vixify Logo" class="logo">
+            <img src="{{ url_for('static', filename='vixify-logo.png') }}" alt="Vixify Logo" class="logo">
         </div>
         <div class="widget-body">
             <div class="form-group">
@@ -178,11 +177,12 @@
             updateSubmitButtonText();
         };
 
-        const stripe = Stripe('pk_live_51RCMx0Kl9OcBA8FDkNa34kkvyfYpr8itGQebyRczBnlvDHWIyNPZAg2AT67lgW8aBt9Lmm2B6EdILEvraMoLKZat00aCh4qzeN', {
+        // ▼▼▼ KENDİ PUBLISHABLE KEY ANAHTARINIZI BURAYA GİRİN ▼▼▼ 
+        const stripe = Stripe('pk_live_51RCMx0Kl9OcBA8FDkNa34kkvyfYpr8itGQebyRczBnlvDHWIyNPZAg2AT67lgW8aBt9Lmm2B6EdILEvraMoLKZat00aCh4qzeN');
+
+        const elements = stripe.elements({
             link_authentication: 'never' 
         });
-
-        const elements = stripe.elements();
         const style = {
             base: {
                 color: '#32325d',
@@ -221,6 +221,7 @@
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
             submitButton.disabled = true;
+            submitButton.textContent = 'İşleniyor...';
 
             const { paymentMethod, error } = await stripe.createPaymentMethod({
                 type: 'card',
@@ -230,10 +231,30 @@
             if (error) {
                 cardErrors.textContent = error.message;
                 submitButton.disabled = false;
+                updateSubmitButtonText();
             } else {
                 cardErrors.textContent = '';
-                resultElement.textContent = `Ödeme Metodu ID'si: ${paymentMethod.id}\nSeçilen Fiyat ID'si: ${priceSelect.value}`;
-                resultElement.style.display = 'block';
+                
+                const response = await fetch('/create-subscription', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        paymentMethodId: paymentMethod.id,
+                        priceId: priceSelect.value,
+                    }),
+                });
+
+                const subscriptionResult = await response.json();
+
+                if (subscriptionResult.error) {
+                    cardErrors.textContent = subscriptionResult.error.message;
+                    submitButton.disabled = false;
+                    updateSubmitButtonText();
+                } else {
+                    submitButton.textContent = 'Abonelik Başarılı!';
+                    resultElement.textContent = `Aboneliğiniz başarıyla başlatıldı! \nAbonelik ID: ${subscriptionResult.subscriptionId}`;
+                    resultElement.style.display = 'block';
+                }
             }
         });
     </script>
