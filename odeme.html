@@ -42,8 +42,8 @@
             border-bottom: 1px solid var(--border-color);
         }
         .logo {
-            /* Logo boyutu büyütüldü */
-            width: 120px; 
+            /* Logo boyutu daha da büyütüldü */
+            width: 160px; 
             height: auto;
         }
         .widget-body {
@@ -66,7 +66,7 @@
             font-size: 0.95em;
             font-family: 'Inter', sans-serif;
             transition: border-color 0.2s, box-shadow 0.2s;
-            box-sizing: border-box; /* Bu, padding'in genişliği etkilememesini sağlar */
+            box-sizing: border-box; 
         }
         select#price-select {
              cursor: pointer;
@@ -100,10 +100,6 @@
         #submit-button:hover {
             background-color: #5b21b6;
         }
-        #submit-button:disabled {
-            background-color: #cbd5e1;
-            cursor: not-allowed;
-        }
         #card-errors {
             color: #dc2626;
             font-size: 0.85em;
@@ -121,10 +117,12 @@
             line-height: 1.5;
         }
 
-        /* ▼▼▼ TAŞMA SORUNU İÇİN EKLENEN DÜZELTME ▼▼▼ */
         @media (max-width: 420px) {
             .card-details-row {
-                flex-direction: column; /* Dar ekranlarda kutuları alt alta getir */
+                flex-direction: column; 
+            }
+            .logo {
+                width: 130px; /* Mobilde logoyu biraz daha kompakt tutalım */
             }
         }
     </style>
@@ -180,7 +178,7 @@
             updateSubmitButtonText();
         };
 
-        const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY_HERE', {
+        const stripe = Stripe('pk_test_51RCMx0Kl9OcBA8FDNIQ3bJofzCEFqusmDxVe17lEvXiCrKonJ71UUJs97ObSjMPj7t3Pf9hsgTZmKLW9pahe6EGi00MYSYz9JF', {
             link_authentication: 'never' 
         });
 
