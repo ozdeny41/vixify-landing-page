@@ -31,18 +31,19 @@
         }
         .checkout-widget {
             background-color: var(--widget-bg);
-            border-radius: 12px;
+            border-radius: 16px;
             box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.04);
             max-width: 400px;
             width: 100%;
         }
         .widget-header {
             text-align: center;
-            padding: 20px 25px;
+            padding: 25px 30px;
             border-bottom: 1px solid var(--border-color);
         }
         .logo {
-            width: 90px;
+            /* Logo boyutu büyütüldü */
+            width: 120px; 
             height: auto;
         }
         .widget-body {
@@ -57,28 +58,19 @@
             font-weight: 500;
             color: var(--text-dark);
         }
-        select#price-select {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            font-size: 0.95em;
-            font-family: 'Inter', sans-serif;
-            cursor: pointer;
-            background-color: #fff;
-        }
-        #payment-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .StripeElement {
+        select#price-select, .StripeElement {
             width: 100%;
             padding: 11px 15px;
             border-radius: 6px;
             border: 1px solid var(--border-color);
-            background-color: white;
+            font-size: 0.95em;
+            font-family: 'Inter', sans-serif;
             transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box; /* Bu, padding'in genişliği etkilememesini sağlar */
+        }
+        select#price-select {
+             cursor: pointer;
+             background-color: #fff;
         }
         .StripeElement--focus {
             border-color: var(--primary-accent);
@@ -108,6 +100,10 @@
         #submit-button:hover {
             background-color: #5b21b6;
         }
+        #submit-button:disabled {
+            background-color: #cbd5e1;
+            cursor: not-allowed;
+        }
         #card-errors {
             color: #dc2626;
             font-size: 0.85em;
@@ -123,6 +119,13 @@
             font-size: 0.8em;
             word-wrap: break-word;
             line-height: 1.5;
+        }
+
+        /* ▼▼▼ TAŞMA SORUNU İÇİN EKLENEN DÜZELTME ▼▼▼ */
+        @media (max-width: 420px) {
+            .card-details-row {
+                flex-direction: column; /* Dar ekranlarda kutuları alt alta getir */
+            }
         }
     </style>
 </head>
@@ -177,8 +180,7 @@
             updateSubmitButtonText();
         };
 
-        const stripe = Stripe('51RCMx0Kl9OcBA8FDNIQ3bJofzCEFqusmDxVe17lEvXiCrKonJ71UUJs97ObSjMPj7t3Pf9hsgTZmKLW9pahe6EGi00MYSYz9JF', {
-            // Stripe Link butonunu devre dışı bırakmak için
+        const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY_HERE', {
             link_authentication: 'never' 
         });
 
@@ -194,7 +196,6 @@
             invalid: { color: '#fa755a', iconColor: '#fa755a' }
         };
 
-        // Ayrı kart elemanları oluşturuyoruz
         const cardNumber = elements.create('cardNumber', { style: style });
         cardNumber.mount('#card-number-element');
 
@@ -225,7 +226,7 @@
 
             const { paymentMethod, error } = await stripe.createPaymentMethod({
                 type: 'card',
-                card: cardNumber, // Ana referans olarak kart numarası elemanını kullanıyoruz
+                card: cardNumber,
             });
 
             if (error) {
@@ -235,7 +236,6 @@
                 cardErrors.textContent = '';
                 resultElement.textContent = `Ödeme Metodu ID'si: ${paymentMethod.id}\nSeçilen Fiyat ID'si: ${priceSelect.value}`;
                 resultElement.style.display = 'block';
-                // Sunucuya gönderme kodunuz burada olacak
             }
         });
     </script>
