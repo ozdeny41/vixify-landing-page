@@ -123,10 +123,12 @@
         <div class="plan-selection">
             <h2>1. Aboneliğinizi Seçin</h2>
             <select id="price-select">
-                <option value="price_1PGjJqxxxxxxxxxxxxxx">Vixify Micro (€49/ay)</option>
-                <option value="price_1PGjKxxxxxxxxxxxxxxx">Vixify Starter (€99/ay)</option>
-                <option value="price_1PGjLxxxxxxxxxxxxxxx" selected>Vixify Business (€199/ay)</option>
-                </select>
+                <option value="price_1RYNQhKl9OcBA8FDtzOuaTVH">Vixify Micro (€49/ay)</option>
+                <option value="price_1RYNRCKl9OcBA8FDwY4NbRW4">Vixify Starter (€99/ay)</option>
+                <option value="price_1RYNRfKl9OcBA8FDvYHM0eds">Vixify Growth (€149/ay)</option>
+                <option value="price_1RYNS3Kl9OcBA8FDHfbeSmkI" selected>Vixify Business (€199/ay)</option>
+                <option value="price_1RYNSKKl9OcBA8FDbsVfpW3p">Vixify Pro (€399/ay)</option>
+            </select>
         </div>
 
         <div class="payment-form">
@@ -144,9 +146,8 @@
     <script src="https://js.stripe.com/v3/"></script>
 
     <script>
-        // ▼▼▼ DEĞİŞTİR ▼▼▼ 
-        // Buraya kendi Stripe "Publishable Key" anahtarınızı yapıştırın
-        const stripe = Stripe('pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+        // ▼▼▼ ÇOK ÖNEMLİ: KENDİ PUBLISHABLE KEY ANAHTARINIZI BURAYA GİRİN ▼▼▼ 
+        const stripe = Stripe('pk_test_51RCMx0Kl9OcBA8FDNIQ3bJofzCEFqusmDxVe17lEvXiCrKonJ71UUJs97ObSjMPj7t3Pf9hsgTZmKLW9pahe6EGi00MYSYz9JF');
 
         const elements = stripe.elements();
         const cardElement = elements.create('card');
@@ -160,28 +161,21 @@
 
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
-            submitButton.disabled = true; // Butonu tekrar tıklanmaya karşı kilitle
+            submitButton.disabled = true;
 
-            // Stripe'dan güvenli ödeme metodu token'ı al
             const { paymentMethod, error } = await stripe.createPaymentMethod({
                 type: 'card',
                 card: cardElement,
             });
 
             if (error) {
-                // Hata varsa göster ve butonu tekrar aktif et
                 cardErrors.textContent = error.message;
                 submitButton.disabled = false;
             } else {
-                // Hata yoksa, sonucu ekranda göster
                 cardErrors.textContent = '';
                 resultElement.textContent = `Ödeme Metodu ID'si başarıyla oluşturuldu: ${paymentMethod.id}\nSeçilen Fiyat ID'si: ${priceSelect.value}\n\nBu bilgiler şimdi sunucuya gönderilerek abonelik başlatılacak.`;
                 resultElement.style.display = 'block';
-
-                // --- GERÇEK PROJE İÇİN SONRAKİ ADIM ---
-                // Burada, `paymentMethod.id` ve `priceSelect.value` değerlerini
-                // fetch() kullanarak kendi sunucunuza (Flask app) göndermeniz gerekir.
-                // Sunucunuz bu bilgilerle Stripe'ta aboneliği oluşturacaktır.
+                // GERÇEK PROJE İÇİN: Sunucuya gönderme kodunuz burada olacak.
             }
         });
     </script>
