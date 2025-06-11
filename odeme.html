@@ -10,13 +10,12 @@
     
     <style>
         :root {
-            --primary-accent: #6D28D9; /* Morun şık bir tonu */
+            --primary-accent: #6D28D9;
             --light-bg: #f7f8fc;
             --widget-bg: #FFFFFF;
             --text-dark: #1e293b;
             --text-light: #64748b;
             --border-color: #e2e8f0;
-            --success-color: #10b981;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -130,7 +129,7 @@
 
     <div class="checkout-widget">
         <div class="widget-header">
-            <img src="{{ url_for('static', filename='vixify-logo.png') }}" alt="Vixify Logo" class="logo">
+            <img src="vixify-logo.png" alt="Vixify Logo" class="logo">
         </div>
         <div class="widget-body">
             <div class="form-group">
@@ -177,8 +176,7 @@
             updateSubmitButtonText();
         };
 
-        // ▼▼▼ KENDİ PUBLISHABLE KEY ANAHTARINIZI BURAYA GİRİN ▼▼▼ 
-        const stripe = Stripe('pk_live_51RCMx0Kl9OcBA8FDkNa34kkvyfYpr8itGQebyRczBnlvDHWIyNPZAg2AT67lgW8aBt9Lmm2B6EdILEvraMoLKZat00aCh4qzeN');
+        const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY_HERE');
 
         const elements = stripe.elements({
             link_authentication: 'never' 
@@ -235,7 +233,8 @@
             } else {
                 cardErrors.textContent = '';
                 
-                const response = await fetch('/create-subscription', {
+                // NOT: Bu URL'in canlıda gerçek sunucu adresinizle değiştirilmesi gerekir.
+                const response = await fetch('http://127.0.0.1:5000/create-subscription', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
