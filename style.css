@@ -1,230 +1,250 @@
+/* Kök Değişkenler (Renk Paleti) */
 :root {
-    --bg-color: #f9fafb;
-    --primary-color: #6366F1; /* Logonuzdan ilham alan canlı bir mor */
-    --primary-hover-color: #4F46E5;
-    --secondary-color: #111827; /* Koyu metin */
-    --text-light-color: #6B7280;
-    --card-bg-color: #FFFFFF;
-    --border-color: #E5E7EB;
-    --popular-bg: linear-gradient(145deg, #4338CA, #6366F1);
+    --bg-dark: #111827; /* Ana arka plan rengi */
+    --bg-light: #1F2937; /* Kart arka plan rengi */
+    --border-color: #374151; /* Kenarlık rengi */
+    --primary-accent: #38BDF8; /* Ana vurgu rengi (canlı mavi) */
+    --primary-gradient: linear-gradient(90deg, #38BDF8 0%, #6366F1 100%);
+    --text-primary: #F9FAFB; /* Ana metin rengi (neredeyse beyaz) */
+    --text-secondary: #9CA3AF; /* İkincil, daha soluk metin rengi */
+    --glow-color: rgba(56, 189, 248, 0.3); /* Popüler kart parlama rengi */
 }
 
+/* Genel Stiller ve Sıfırlama */
 *, *::before, *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--secondary-color);
-    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
 }
 
-/* Navigasyon Barı */
+/* Navigasyon Barı Stilleri */
 .main-nav {
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(17, 24, 39, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
-    padding: 15px 0;
+    padding: 1rem 0;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.nav-logo img {
-    height: 48px; /* Logo boyutu artırıldı */
-    width: auto;
-    display: block;
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.nav-logo .logo-icon {
+    color: var(--primary-accent);
 }
 
 .nav-menu {
     display: flex;
-    gap: 30px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    gap: 2.5rem;
 }
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-light-color);
+    color: var(--text-secondary);
     font-weight: 500;
-    font-size: 0.95em;
-    transition: color 0.2s ease;
-    padding: 5px 0;
+    transition: color 0.3s ease;
     position: relative;
+    padding-bottom: 5px;
 }
 
 .nav-link:hover {
-    color: var(--secondary-color);
+    color: var(--text-primary);
 }
 
 .nav-link.active {
-    color: var(--primary-color);
+    color: var(--primary-accent);
     font-weight: 600;
 }
 
 .nav-link.active::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: var(--primary-color);
+    background: var(--primary-accent);
 }
-
 
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 1rem;
 }
 
 .nav-button-secondary {
-    background-color: transparent;
-    color: var(--text-light-color);
+    background: transparent;
+    color: var(--text-secondary);
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 0.5rem 1rem;
     border-radius: 8px;
     font-weight: 500;
-    font-size: 0.9em;
-    transition: color 0.2s ease, background-color 0.2s;
+    transition: all 0.3s ease;
 }
+
 .nav-button-secondary:hover {
-    color: var(--secondary-color);
-    background-color: #f3f4f6;
+    color: var(--text-primary);
+    background-color: var(--bg-light);
 }
 
 .nav-button-primary {
-    background-color: var(--primary-color);
+    background: var(--primary-gradient);
     color: #fff;
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 0.5rem 1.25rem;
     border-radius: 8px;
-    font-weight: 500;
-    font-size: 0.9em;
-    transition: background-color 0.2s ease;
-}
-.nav-button-primary:hover {
-    background-color: var(--primary-hover-color);
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Ana İçerik */
+.nav-button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Ana İçerik Stilleri */
 .content-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 4rem 2rem;
 }
 
 .page-header {
     text-align: center;
-    padding: 80px 0 60px 0;
+    margin-bottom: 4rem;
 }
 
 .page-header h1 {
-    font-size: 3.2em;
+    font-size: 3.5rem;
     font-weight: 700;
     letter-spacing: -1.5px;
-    margin: 0 0 15px 0;
+    margin-bottom: 1rem;
 }
 
 .page-header .subtitle {
-    font-size: 1.25em;
-    color: var(--text-light-color);
+    font-size: 1.25rem;
+    color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
-    line-height: 1.6;
 }
 
-/* Fiyatlandırma Kartları */
+/* Fiyatlandırma Kartları Grid */
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    padding-bottom: 80px;
+    gap: 2rem;
 }
 
 .pricing-card {
-    background-color: var(--card-bg-color);
+    background-color: var(--bg-light);
     border: 1px solid var(--border-color);
-    border-top: 4px solid var(--border-color); /* Yeni üst kenarlık */
     border-radius: 16px;
-    padding: 30px;
+    padding: 2.5rem;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .pricing-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-    border-top-color: var(--primary-color); /* Hover'da üst kenarlık rengini değiştir */
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border-color: var(--primary-accent);
 }
 
-.card-content { flex-grow: 1; }
-.popular-badge {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 4px 10px;
-    border-radius: 99px;
-    font-size: 0.75em;
+.card-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+.card-description { color: var(--text-secondary); margin-bottom: 1.5rem; }
+.card-price { font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; }
+.card-price .price-period { font-size: 1rem; font-weight: 400; color: var(--text-secondary); }
+.card-price-custom {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    min-height: 58px; /* Fiyat alanı ile aynı yükseklikte olması için */
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.feature-list { list-style: none; margin-bottom: 2rem; flex-grow: 1; }
+.feature-list li { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; color: var(--text-secondary); }
+.feature-list li i { color: var(--primary-accent); }
+
+.card-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 8px;
     font-weight: 600;
-    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    background-color: var(--border-color);
+    color: var(--text-primary);
 }
-.card-title { font-size: 1.25em; font-weight: 600; margin: 0; }
-.card-description { color: var(--text-light-color); margin: 5px 0 25px 0; font-size: 0.9em; }
-.card-price { font-size: 2.75em; font-weight: 700; margin-bottom: 25px; }
-.card-price .price-period { font-size: 0.4em; font-weight: 400; color: var(--text-light-color); }
-.card-price.price-text { font-size: 1.2em; font-weight: 500; color: var(--text-light-color); }
-.feature-list { list-style: none; padding: 0; margin: 0; }
-.feature-list li { padding-left: 25px; position: relative; margin-bottom: 12px; color: var(--secondary-color); }
-.feature-list li::before { content: '✓'; color: var(--primary-color); position: absolute; left: 0; font-weight: 600; }
-.card-button { display: block; width: 100%; text-align: center; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 600; margin-top: 30px; transition: all 0.2s ease; }
-.card-button.primary { background-color: var(--primary-color); color: #fff; }
-.card-button.primary:hover { background-color: var(--primary-hover-color); }
-.card-button.secondary { background-color: #fff; color: var(--primary-color); border: 1px solid var(--border-color); }
-.card-button.secondary:hover { background-color: var(--bg-color); border-color: #d1d5db; }
-
-/* Popüler Kart Özel Tasarımı */
-.pricing-card.popular {
-    border: none;
-    background: var(--popular-bg);
+.card-button:hover {
+    background-color: #4b5563; /* Daha koyu gri */
+}
+.card-button.primary {
+    background: var(--primary-gradient);
     color: #fff;
 }
-.pricing-card.popular:hover { border-top-color: transparent; }
-.pricing-card.popular .card-title,
-.pricing-card.popular .card-price,
-.pricing-card.popular .feature-list li { color: #fff; }
-.pricing-card.popular .card-description,
-.pricing-card.popular .price-period { color: rgba(255,255,255,0.7); }
-.pricing-card.popular .feature-list li::before { color: #fff; }
-.pricing-card.popular .card-button.primary {
-    background-color: #fff;
-    color: var(--primary-color);
-}
-.pricing-card.popular .card-button.primary:hover {
-    background-color: #f0f0f0;
+.card-button.primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
+/* Popüler Kart Özel Stilleri */
+.pricing-card.popular {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 25px var(--glow-color);
+}
+.popular-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--primary-gradient);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
 
-/* Mobil Uyum */
+/* Mobil Uyum (Responsive) */
 @media (max-width: 992px) {
-    .nav-menu { display: none; } /* Tablette menüyü gizle */
+    .nav-menu, .nav-actions { display: none; } /* Tablette menüyü ve butonları gizle */
+    .page-header h1 { font-size: 2.5rem; }
 }
+
 @media (max-width: 768px) {
     .pricing-grid {
         grid-template-columns: 1fr;

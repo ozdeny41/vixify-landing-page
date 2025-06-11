@@ -3,37 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vixify - Fiyatlandırma</title>
+    <title>Vixify - Yeni Nesil Fiyatlandırma</title>
+    
+    <!-- CSS Dosyası -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- İkonlar için Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
+    <!-- Navigasyon Barı -->
     <nav class="main-nav">
         <div class="nav-container">
             <a href="/" class="nav-logo">
-                <img src="vixify-logo.png" alt="Vixify Logosu">
+                <!-- SVG Logo Örneği -->
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12.6667 7.33333C12.6667 7.03123 12.4021 6.76667 12.1 6.76667H11.9C11.5979 6.76667 11.3333 7.03123 11.3333 7.33333V12.7L8.96667 10.3333C8.75956 10.1262 8.41733 10.1262 8.21022 10.3333L8.09763 10.4459C7.89052 10.653 7.89052 10.9952 8.09763 11.2023L11.5976 14.7023C11.8047 14.9094 12.147 14.9094 12.3541 14.7023L15.8541 11.2023C16.0612 10.9952 16.0612 10.653 15.8541 10.4459L15.7415 10.3333C15.5344 10.1262 15.1922 10.1262 14.9851 10.3333L12.6667 12.65V7.33333Z" />
+                </svg>
+                <span>Vixify</span>
             </a>
             <div class="nav-menu">
-                <a href="/" class="nav-link">Ana Sayfa</a>
+                <a href="#" class="nav-link">Ana Sayfa</a>
                 <a href="#" class="nav-link active">Fiyatlandırma</a>
                 <a href="#" class="nav-link">Özellikler</a>
                 <a href="#" class="nav-link">İletişim</a>
             </div>
             <div class="nav-actions">
                 <a href="#" class="nav-button-secondary">Giriş Yap</a>
-                <a href="#" class="nav-button-primary">Kayıt Ol</a>
+                <a href="#" class="nav-button-primary">Ücretsiz Başla</a>
             </div>
         </div>
     </nav>
 
+    <!-- Ana İçerik -->
     <main class="content-container">
         <header class="page-header">
-            <h1>Size en uygun planı seçin.</h1>
+            <h1>Size En Uygun Planı Bulun</h1>
             <p class="subtitle">
-                Şeffaf ve esnek fiyatlandırma ile işinizi bugün bir sonraki seviyeye taşıyın. Taahhüt yok, dilediğiniz zaman iptal edebilirsiniz.
+                İşinizi büyütmek için tasarlanmış esnek ve şeffaf fiyatlandırma seçenekleri.
             </p>
         </header>
 
@@ -41,95 +54,83 @@
             
             <!-- Paket 1: Micro -->
             <div class="pricing-card">
-                <div class="card-content">
-                    <h3 class="card-title">Micro</h3>
-                    <p class="card-description">Yeni başlayanlar için.</p>
-                    <div class="card-price">€49 <span class="price-period">/ ay</span></div>
-                    <ul class="feature-list">
-                        <li>2.500 Ürün Takibi</li>
-                        <li>Stok & Fiyat Senkronizasyonu</li>
-                        <li>E-posta Desteği</li>
-                    </ul>
-                </div>
-                <a href="/odeme.html?plan=price_1RYNQhKl9OcBA8FDtzOuaTVH" class="card-button secondary">Planı Seç</a>
+                <h3 class="card-title">Micro</h3>
+                <p class="card-description">Yeni başlayanlar için.</p>
+                <div class="card-price">€49 <span class="price-period">/ ay</span></div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> 2.500 Ürün Takibi</li>
+                    <li><i class="fas fa-check-circle"></i> Stok & Fiyat Senkronizasyonu</li>
+                    <li><i class="fas fa-check-circle"></i> E-posta Desteği</li>
+                </ul>
+                <a href="#" class="card-button">Planı Seç</a>
             </div>
 
             <!-- Paket 2: Starter -->
             <div class="pricing-card">
-                <div class="card-content">
-                    <h3 class="card-title">Starter</h3>
-                    <p class="card-description">Küçük ekipler ve büyüyen satıcılar.</p>
-                    <div class="card-price">€99 <span class="price-period">/ ay</span></div>
-                    <ul class="feature-list">
-                        <li>5.000 Ürün Takibi</li>
-                        <li>Stok & Fiyat Senkronizasyonu</li>
-                        <li>Temel Raporlama</li>
-                    </ul>
-                </div>
-                <a href="/odeme.html?plan=price_1RYNRCKl9OcBA8FDwY4NbRW4" class="card-button secondary">Planı Seç</a>
+                <h3 class="card-title">Starter</h3>
+                <p class="card-description">Küçük ekipler ve büyüyen satıcılar.</p>
+                <div class="card-price">€99 <span class="price-period">/ ay</span></div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> 5.000 Ürün Takibi</li>
+                    <li><i class="fas fa-check-circle"></i> Stok & Fiyat Senkronizasyonu</li>
+                    <li><i class="fas fa-check-circle"></i> Temel Raporlama</li>
+                </ul>
+                <a href="#" class="card-button">Planı Seç</a>
             </div>
             
-            <!-- Paket 3: Growth -->
-            <div class="pricing-card">
-                <div class="card-content">
-                    <h3 class="card-title">Growth</h3>
-                    <p class="card-description">Büyüme odaklı satıcılar.</p>
-                    <div class="card-price">€149 <span class="price-period">/ ay</span></div>
-                    <ul class="feature-list">
-                        <li>10.000 Ürün Takibi</li>
-                        <li>Stok & Fiyat Senkronizasyonu</li>
-                        <li>Gelişmiş Raporlama</li>
-                    </ul>
-                </div>
-                <a href="/odeme.html?plan=price_1RYNRfKl9OcBA8FDvYHM0eds" class="card-button secondary">Planı Seç</a>
-            </div>
-
             <!-- Paket 4: Business (Popüler) -->
             <div class="pricing-card popular">
                 <div class="popular-badge">POPÜLER</div>
-                <div class="card-content">
-                    <h3 class="card-title">Business</h3>
-                    <p class="card-description">En iyi değer ve özellikler.</p>
-                    <div class="card-price">€199 <span class="price-period">/ ay</span></div>
-                    <ul class="feature-list">
-                        <li>25.000 Ürün Takibi</li>
-                        <li>Stok & Fiyat Senkronizasyonu</li>
-                        <li>Kapsamlı Raporlama</li>
-                        <li>Öncelikli Destek</li>
-                    </ul>
-                </div>
-                <a href="/odeme.html?plan=price_1RYNS3Kl9OcBA8FDHfbeSmkI" class="card-button primary">Planı Seç</a>
+                <h3 class="card-title">Business</h3>
+                <p class="card-description">En iyi değer ve özellikler.</p>
+                <div class="card-price">€199 <span class="price-period">/ ay</span></div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> 25.000 Ürün Takibi</li>
+                    <li><i class="fas fa-check-circle"></i> Stok & Fiyat Senkronizasyonu</li>
+                    <li><i class="fas fa-check-circle"></i> Kapsamlı Raporlama</li>
+                    <li><i class="fas fa-star"></i> Öncelikli Destek</li>
+                </ul>
+                <a href="#" class="card-button primary">Hemen Başla</a>
+            </div>
+
+            <!-- Paket 3: Growth -->
+            <div class="pricing-card">
+                <h3 class="card-title">Growth</h3>
+                <p class="card-description">Büyüme odaklı satıcılar.</p>
+                <div class="card-price">€149 <span class="price-period">/ ay</span></div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> 10.000 Ürün Takibi</li>
+                    <li><i class="fas fa-check-circle"></i> Stok & Fiyat Senkronizasyonu</li>
+                    <li><i class="fas fa-check-circle"></i> Gelişmiş Raporlama</li>
+                </ul>
+                <a href="#" class="card-button">Planı Seç</a>
             </div>
 
              <!-- Paket 5: Pro -->
              <div class="pricing-card">
-                <div class="card-content">
-                    <h3 class="card-title">Pro</h3>
-                    <p class="card-description">Yüksek hacimli operasyonlar.</p>
-                    <div class="card-price">€399 <span class="price-period">/ ay</span></div>
-                    <ul class="feature-list">
-                        <li>50.000 Ürün Takibi</li>
-                        <li>Stok & Fiyat Senkronizasyonu</li>
-                        <li>Detaylı Raporlama</li>
-                        <li>7/24 Destek</li>
-                    </ul>
-                </div>
-                <a href="/odeme.html?plan=price_1RYNSKKl9OcBA8FDbsVfpW3p" class="card-button secondary">Planı Seç</a>
+                <h3 class="card-title">Pro</h3>
+                <p class="card-description">Yüksek hacimli operasyonlar.</p>
+                <div class="card-price">€399 <span class="price-period">/ ay</span></div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> 50.000 Ürün Takibi</li>
+                    <li><i class="fas fa-check-circle"></i> Stok & Fiyat Senkronizasyonu</li>
+                    <li><i class="fas fa-check-circle"></i> Detaylı Raporlama</li>
+                    <li><i class="fas fa-star"></i> 7/24 Destek</li>
+                </ul>
+                <a href="#" class="card-button">Planı Seç</a>
             </div>
 
              <!-- Paket 6: Enterprise -->
              <div class="pricing-card">
-                <div class="card-content">
-                    <h3 class="card-title">Enterprise</h3>
-                    <p class="card-description">Özel ihtiyaçlar ve büyük ekipler.</p>
-                    <div class="card-price price-text">Özel Fiyatlandırma</div>
-                    <ul class="feature-list">
-                        <li>Limitsiz Ürün Takibi</li>
-                        <li>Özel Entegrasyonlar</li>
-                        <li>Kişisel Hesap Yöneticisi</li>
-                    </ul>
-                </div>
-                <a href="mailto:info@vixify.net" class="card-button secondary">İletişime Geç</a>
+                <h3 class="card-title">Enterprise</h3>
+                <p class="card-description">Özel ihtiyaçlar ve büyük ekipler.</p>
+                <div class="card-price-custom">Özel Fiyatlandırma</div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-infinity"></i> Limitsiz Ürün Takibi</li>
+                    <li><i class="fas fa-cogs"></i> Özel Entegrasyonlar</li>
+                    <li><i class="fas fa-user-tie"></i> Kişisel Hesap Yöneticisi</li>
+                </ul>
+                <a href="mailto:info@vixify.net" class="card-button">İletişime Geç</a>
             </div>
             
         </div>
