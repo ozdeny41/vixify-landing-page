@@ -2,11 +2,11 @@
     --bg-color: #f9fafb;
     --primary-color: #6366F1; /* Logonuzdan ilham alan canlı bir mor */
     --primary-hover-color: #4F46E5;
-    --secondary-color: #1F2937; /* Koyu metin */
+    --secondary-color: #111827; /* Koyu metin */
     --text-light-color: #6B7280;
     --card-bg-color: #FFFFFF;
     --border-color: #E5E7EB;
-    --popular-border-color: var(--primary-color);
+    --popular-bg: linear-gradient(145deg, #4338CA, #6366F1);
 }
 
 *, *::before, *::after {
@@ -202,7 +202,7 @@ body {
 /* Popüler Kart Özel Tasarımı */
 .pricing-card.popular {
     border: none;
-    background: linear-gradient(145deg, #4338CA, #6366F1);
+    background: var(--popular-bg);
     color: #fff;
 }
 .pricing-card.popular:hover { border-top-color: transparent; }
