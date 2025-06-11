@@ -42,12 +42,71 @@ body {
 }
 
 .nav-logo img {
-    height: 35px;
+    height: 40px; /* Logo boyutu artırıldı */
     width: auto;
     display: block;
 }
 
-.nav-button {
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    /* Menüyü ortalamak için */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-light-color);
+    font-weight: 500;
+    font-size: 0.95em;
+    transition: color 0.2s ease;
+    padding: 5px 0;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color);
+}
+
+.nav-link.active {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-button-secondary {
+    background-color: transparent;
+    color: var(--text-light-color);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9em;
+    transition: color 0.2s ease, background-color 0.2s;
+}
+.nav-button-secondary:hover {
+    color: var(--secondary-color);
+    background-color: #f3f4f6;
+}
+
+.nav-button-primary {
     background-color: var(--primary-color);
     color: #fff;
     text-decoration: none;
@@ -57,7 +116,7 @@ body {
     font-size: 0.9em;
     transition: background-color 0.2s ease;
 }
-.nav-button:hover {
+.nav-button-primary:hover {
     background-color: var(--primary-hover-color);
 }
 
@@ -112,7 +171,7 @@ body {
 }
 
 .card-content {
-    flex-grow: 1; /* İçeriği büyütüp butonu aşağı iter */
+    flex-grow: 1; 
 }
 
 .popular-badge {
@@ -204,4 +263,11 @@ body {
 
 .pricing-card.popular {
     border: 2px solid var(--popular-border-color);
+}
+
+/* Mobil için Navigasyon Menüsünü Gizleme */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
 }
