@@ -60,7 +60,8 @@ h1 {
 /* Fiyatlandırma Kartları Grid Yapısı */
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3'lü grid yapısı */
+    /* Masaüstünde 3 sütunlu bir yapı kullanıyoruz */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 30px;
 }
 
@@ -126,7 +127,7 @@ h1 {
     font-weight: 400;
     color: var(--secondary-text-color);
     height: auto;
-    min-height: 60px; /* Sabit yükseklik */
+    min-height: 60px; /* Diğerleriyle yükseklik hizalaması için */
     align-items: flex-start;
 }
 
@@ -134,7 +135,7 @@ h1 {
     list-style: none;
     padding: 0;
     margin: 0 0 35px 0;
-    flex-grow: 1;
+    flex-grow: 1; /* Butonların en altta kalmasını sağlar */
 }
 
 .card-features li {
@@ -174,7 +175,7 @@ h1 {
 
 /* Popüler Kart Vurgusu */
 .pricing-card.popular {
-    background: #0d1a2e; /* Koyu tema */
+    background: #1d1d1f; /* Koyu tema */
     color: #f5f5f7;
 }
 
@@ -208,10 +209,10 @@ h1 {
 
 @media (max-width: 768px) {
     body {
-        padding: 20px;
+        padding: 80px 20px 20px 20px; /* Logonun üstüne çıkmaması için */
     }
     header {
-        margin: 40px 0;
+        margin: 0 0 40px 0;
     }
     h1 {
         font-size: 2.5em;
