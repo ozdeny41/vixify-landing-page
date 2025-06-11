@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Kontrol Paneli - Vixify{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1>Kontrol Panelinize Hoş Geldiniz</h1>
+    <p>Merhaba, <strong>{{ user_email }}</strong>!</p>
+    <p>Mevcut abonelik durumunuz: <strong>{{ status }}</strong></p>
+    <br>
+    <p>Aboneliğinizi başlatmak veya yönetmek için aşağıdaki butonu kullanabilirsiniz.</p>
+    <a href="{{ url_for('odeme_page') }}" class="dashboard-button">Abonelik Sayfasına Git</a>
+    <!-- Gelecekte buraya Stripe Müşteri Portalı için bir buton eklenecek -->
+</div>
+{% endblock %}

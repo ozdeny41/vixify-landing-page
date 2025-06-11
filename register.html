@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Kayıt Ol - Vixify{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-box">
+        <h2>Yeni Hesap Oluştur</h2>
+        <p>Vixify'a katılarak işinizi otomatize etmeye başlayın.</p>
+        <form method="POST" action="{{ url_for('register') }}">
+            <div class="form-group">
+                <label for="email">E-posta Adresi</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Şifre</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <button type="submit" class="auth-button">Hesap Oluştur</button>
+        </form>
+        <div class="auth-footer">
+            Zaten bir hesabınız var mı? <a href="{{ url_for('login') }}">Oturum Açın</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,214 +1,153 @@
-:root {
-    /* Renk Paletini Açık Tema İçin Güncelliyoruz */
-    --primary-purple: #8A2BE2; /* Ana Vurgu Rengi (Mor) */
-    --accent-cyan: #007BFF;   /* İkincil Vurgu Rengi (Daha kurumsal bir mavi tonu) */
-    --light-bg: #F8F9FA;     /* Çok hafif kırık beyaz arkaplan */
-    --card-bg: #FFFFFF;      /* Kartların arkaplanı (Saf Beyaz) */
-    --text-dark: #212529;     /* Ana metin rengi (Koyu Gri) */
-    --text-light: #6c757d;    /* İkincil metin rengi (Açık Gri) */
-    --border-color: #dee2e6;  /* Kenarlık rengi */
-}
+/* ... mevcut CSS kodlarınızın altına ekleyin ... */
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--light-bg);
-    color: var(--text-dark);
-    margin: 0;
-    padding: 40px 20px;
-}
-
-.logo {
-    position: absolute;
-    top: 25px;      /* Yeni, daha yakın konum */
-    left: 25px;     /* Yeni, daha yakın konum */
-    width: 160px;
-    height: auto;
-    z-index: 100;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-header {
-    margin-bottom: 60px;
-    padding-top: 80px; /* Logonun altında kalmaması için başlığa üstten boşluk */
-}
-
-h1 {
-    font-size: 2.8em;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--text-dark);
-}
-
-.subtitle {
-    font-size: 1.2em;
-    font-weight: 300;
-    color: var(--text-light);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
-}
-
-.pricing-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 30px;
+/* Navigasyon Menüsü */
+.main-nav {
     display: flex;
-    flex-direction: column;
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
-
-.pricing-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.nav-logo img {
+    height: 40px;
+    width: auto;
 }
-
-.card-header h3 {
-    font-size: 1.4em;
-    font-weight: 600;
-    margin: 0 0 20px 0;
-    color: var(--text-dark);
-}
-
-.card-price {
-    font-size: 3.5em;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 30px;
-}
-
-.card-price sup {
-    font-size: 0.4em;
-    font-weight: 400;
-    vertical-align: top;
-    top: 15px;
-    color: var(--text-light);
-}
-
-.card-price span {
-    font-size: 0.3em;
-    font-weight: 300;
-    color: var(--text-light);
-}
-
-.card-price.price-text {
-    font-size: 1.3em;
-    font-weight: 400;
-    color: var(--text-light);
-    line-height: 1.4;
-    height: 100px;
+.nav-links {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 20px;
 }
-
-.card-features {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 30px 0;
-    text-align: left;
-    flex-grow: 1;
-    color: var(--text-light);
-}
-
-.card-features li {
-    margin-bottom: 15px;
-    padding-left: 25px;
-    position: relative;
-}
-
-.card-features li::before {
-    content: '✓';
-    color: var(--accent-cyan);
-    position: absolute;
-    left: 0;
-}
-
-.card-button {
-    background-color: var(--accent-cyan);
-    color: #fff;
-    border: 2px solid var(--accent-cyan);
-    padding: 12px 20px;
+.nav-links a {
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
+    color: var(--text-light);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.nav-links a:hover {
+    color: var(--primary-accent);
+}
+.nav-button-primary {
+    background-color: var(--primary-accent);
+    color: #fff !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+.nav-button-primary:hover {
+    background-color: #5b21b6;
+}
+.nav-button-secondary {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-dark) !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+
+/* Sayfa İçeriğinin Menü Altında Kalmasını Sağlama */
+main {
+    padding-top: 80px; /* Menünün yüksekliği kadar boşluk */
+}
+
+/* Kayıt ve Giriş Formları */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+.auth-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+.auth-box h2 {
+    margin-top: 0;
+    font-size: 1.8em;
+}
+.auth-box p {
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+.auth-box .form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.auth-box label {
     display: block;
-    margin-top: auto;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    margin-bottom: 5px;
+    font-weight: 500;
 }
-
-.card-button:hover {
-    background-color: #0056b3; /* Mavinin biraz daha koyu tonu */
-    border-color: #0056b3;
+.auth-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
 }
-
-/* Popüler Paket */
-.pricing-card.popular {
-    border-color: var(--primary-purple);
-    border-width: 2px;
-}
-
-.pricing-card.popular .card-button {
-    background-color: var(--primary-purple);
-    border-color: var(--primary-purple);
+.auth-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--primary-accent);
     color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.auth-footer {
+    margin-top: 20px;
+    font-size: 0.9em;
 }
 
-.pricing-card.popular .card-button:hover {
-    background-color: #7A1CC2; /* Morun biraz daha koyusu */
-    border-color: #7A1CC2;
+/* Flash Mesajları */
+.flash-messages {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    z-index: 2000;
 }
-
-.popular-tag {
-    position: absolute;
-    top: 15px;
-    right: -45px;
-    background: var(--primary-purple);
+.alert {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
     color: #fff;
-    padding: 5px 40px;
-    font-size: 0.8em;
-    font-weight: 700;
-    transform: rotate(45deg);
+    min-width: 250px;
+}
+.alert-success { background-color: #28a745; }
+.alert-danger { background-color: #dc3545; }
+.alert-warning { background-color: #ffc107; color: #333; }
+.alert-info { background-color: #17a2b8; }
+
+/* Dashboard Sayfası */
+.dashboard-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+}
+.dashboard-button {
+    display: inline-block;
+    background-color: var(--primary-accent);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 20px;
 }
 
-/* Mobil Cihazlar İçin Ayarlar */
-@media (max-width: 768px) {
-    body {
-        padding: 20px 10px;
-    }
-
-    header {
-        text-align: left;
-        padding-top: 80px; /* Mobil için de boşluk bırakalım */
-    }
-    
-    .logo {
-        position: absolute;
-        top: 15px;      /* Yeni, daha yakın mobil konum */
-        left: 15px;     /* Yeni, daha yakın mobil konum */
-        width: 120px;
-    }
-
-    h1 {
-        font-size: 1.8em;
-        text-align: left;
-    }
-
-    .subtitle {
-        text-align: left;
-        font-size: 1em;
-    }
-}
