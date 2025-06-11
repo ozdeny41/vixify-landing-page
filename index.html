@@ -3,195 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vixify - Fiyatlandırma</title>
+    <title>Vixify - Amazon Dropshipping Otomasyonu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Logo artık sayfanın sol üst köşesinde sabit -->
+    <a href="/" class="logo-link">
+        <img src="vixify-logo.png" alt="Vixify Logo" class="logo">
+    </a>
 
-    <header class="main-header">
-        <div class="container">
-            <img src="vixify-logo.png" alt="Vixify Logo" class="logo">
-        </div>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Sizin için doğru planı bulun.</h1>
+            <p class="subtitle">
+                Her ölçekteki Amazon satıcısı için tasarlanmış basit, şeffaf ve güçlü fiyatlandırma seçenekleri.
+            </p>
+        </header>
 
-    <main>
-        <section class="intro-section">
-            <div class="container">
-                <h1>Sizin için doğru planı bulun.</h1>
-                <p class="subtitle">Her ölçekteki Amazon satıcısı için tasarlanmış basit, şeffaf ve güçlü fiyatlandırma seçenekleri.</p>
-                <div class="pricing-toggle">
-                    <button id="monthly-btn" class="toggle-button active">Aylık</button>
-                    <button id="yearly-btn" class="toggle-button">Yıllık <span class="yearly-discount">2 Ay Ücretsiz</span></button>
-                </div>
+        <main class="pricing-grid">
+            
+            <!-- Paket 1: Micro -->
+            <div class="pricing-card">
+                <div class="card-header"><h3>Vixify Micro</h3></div>
+                <div class="card-price"><sup>€</sup>49<span>/ay</span></div>
+                <ul class="card-features">
+                    <li>2.500 Ürün Takibi</li>
+                    <li>Stok Senkronizasyonu</li>
+                    <li>Fiyat Senkronizasyonu</li>
+                    <li>E-posta Desteği</li>
+                </ul>
+                <a href="/odeme.html?plan=price_1RYNQhKl9OcBA8FDtzOuaTVH" class="card-button">Satın Al</a>
             </div>
-        </section>
 
-        <section class="pricing-section">
-            <div class="container">
-                <div class="pricing-grid">
-                    <!-- Paket 1 -->
-                    <div class="pricing-card">
-                        <div class="card-header">
-                            <h3>Starter</h3>
-                            <p class="card-description">Yeni başlayan veya az sayıda ürünle satış yapanlar için ideal.</p>
-                        </div>
-                        <div class="card-price">
-                            <div class="price-value active" data-price-monthly="€49">€49</div>
-                            <div class="price-value" data-price-yearly="€490">€490</div>
-                            <span class="price-period">/ay</span>
-                        </div>
-                        <a href="#" class="card-button">Planı Seç</a>
-                        <ul class="card-features">
-                            <li>5.000 Ürün Takibi</li>
-                            <li>Fiyat Senkronizasyonu</li>
-                            <li>Stok Senkronizasyonu</li>
-                        </ul>
-                    </div>
-
-                    <!-- Paket 2 (Popüler) -->
-                    <div class="pricing-card popular">
-                        <div class="popular-tag">EN POPÜLER</div>
-                        <div class="card-header">
-                            <h3>Business</h3>
-                            <p class="card-description">İşini büyütmek isteyen satıcılar için en dengeli ve güçlü paket.</p>
-                        </div>
-                        <div class="card-price">
-                            <div class="price-value active" data-price-monthly="€199">€199</div>
-                            <div class="price-value" data-price-yearly="€1990">€1990</div>
-                            <span class="price-period">/ay</span>
-                        </div>
-                        <a href="#" class="card-button">Planı Seç</a>
-                        <ul class="card-features">
-                            <li>25.000 Ürün Takibi</li>
-                            <li>Tüm Starter Özellikleri</li>
-                            <li>Kapsamlı Raporlama</li>
-                            <li>Öncelikli Destek</li>
-                        </ul>
-                    </div>
-
-                    <!-- Paket 3 -->
-                    <div class="pricing-card">
-                        <div class="card-header">
-                            <h3>Enterprise</h3>
-                            <p class="card-description">Yüksek hacimli ve özel ihtiyaçları olan büyük işletmeler için.</p>
-                        </div>
-                        <div class="card-price price-text">
-                            Size özel bir çözüm için bizimle iletişime geçin.
-                        </div>
-                        <a href="mailto:info@vixify.net" class="card-button">İletişime Geç</a>
-                        <ul class="card-features">
-                            <li>50.000+ Ürün Takibi</li>
-                            <li>Tüm Business Özellikleri</li>
-                            <li>Özel Entegrasyonlar</li>
-                            <li>Kişisel Hesap Yöneticisi</li>
-                        </ul>
-                    </div>
-                </div>
+            <!-- Paket 2: Starter -->
+            <div class="pricing-card">
+                <div class="card-header"><h3>Vixify Starter</h3></div>
+                <div class="card-price"><sup>€</sup>99<span>/ay</span></div>
+                <ul class="card-features">
+                    <li>5.000 Ürün Takibi</li>
+                    <li>Stok Senkronizasyonu</li>
+                    <li>Fiyat Senkronizasyonu</li>
+                    <li>Temel Raporlama</li>
+                </ul>
+                <a href="/odeme.html?plan=price_1RYNRCKl9OcBA8FDwY4NbRW4" class="card-button">Satın Al</a>
             </div>
-        </section>
 
-        <section class="feature-comparison-section">
-            <div class="container">
-                <h2>Tüm Özellikleri Karşılaştırın</h2>
-                <table class="feature-table">
-                    <thead>
-                        <tr>
-                            <th>Özellikler</th>
-                            <th>Starter</th>
-                            <th>Business</th>
-                            <th>Enterprise</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Ürün Takip Limiti</td>
-                            <td>5.000</td>
-                            <td>25.000</td>
-                            <td>50.000+</td>
-                        </tr>
-                        <tr>
-                            <td>Fiyat & Stok Senkronizasyonu</td>
-                            <td class="check-mark">✓</td>
-                            <td class="check-mark">✓</td>
-                            <td class="check-mark">✓</td>
-                        </tr>
-                        <tr>
-                            <td>Kapsamlı Raporlama</td>
-                            <td>-</td>
-                            <td class="check-mark">✓</td>
-                            <td class="check-mark">✓</td>
-                        </tr>
-                        <tr>
-                            <td>Öncelikli Destek</td>
-                            <td>-</td>
-                            <td class="check-mark">✓</td>
-                            <td class="check-mark">✓</td>
-                        </tr>
-                        <tr>
-                            <td>Kişisel Hesap Yöneticisi</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td class="check-mark">✓</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- Paket 3: Growth -->
+            <div class="pricing-card">
+                <div class="card-header"><h3>Vixify Growth</h3></div>
+                <div class="card-price"><sup>€</sup>149<span>/ay</span></div>
+                <ul class="card-features">
+                    <li>10.000 Ürün Takibi</li>
+                    <li>Stok Senkronizasyonu</li>
+                    <li>Fiyat Senkronizasyonu</li>
+                    <li>Gelişmiş Raporlama</li>
+                </ul>
+                <a href="/odeme.html?plan=price_1RYNRfKl9OcBA8FDvYHM0eds" class="card-button">Satın Al</a>
             </div>
-        </section>
 
-        <section class="faq-section">
-            <div class="container">
-                <h2>Sıkça Sorulan Sorular</h2>
-                <div class="faq-item">
-                    <details>
-                        <summary>Aboneliğimi istediğim zaman iptal edebilir miyim?</summary>
-                        <p>Evet, kesinlikle. Aboneliğinizi hiçbir koşul olmadan dilediğiniz zaman kontrol panelinizden tek bir tıkla iptal edebilirsiniz. Taahhüt yoktur.</p>
-                    </details>
-                </div>
-                <div class="faq-item">
-                    <details>
-                        <summary>Yıllık ödemede indirim var mı?</summary>
-                        <p>Evet, yıllık ödeme seçeneğini tercih ettiğinizde 12 ay yerine sadece 10 ay ödersiniz, böylece 2 ay tamamen ücretsiz olur.</p>
-                    </details>
-                </div>
-                <div class="faq-item">
-                    <details>
-                        <summary>Kurulum için yardıma ihtiyacım var mı?</summary>
-                        <p>Hayır, Vixify son derece kullanıcı dostu bir arayüze sahiptir. Amazon satıcı hesabınızı birkaç tıkla kolayca bağlayabilir ve dakikalar içinde kullanmaya başlayabilirsiniz.</p>
-                    </details>
-                </div>
+            <!-- Paket 4: Business (Popüler) -->
+            <div class="pricing-card popular">
+                <div class="popular-tag">EN POPÜLER</div>
+                <div class="card-header"><h3>Vixify Business</h3></div>
+                <div class="card-price"><sup>€</sup>199<span>/ay</span></div>
+                <ul class="card-features">
+                    <li>25.000 Ürün Takibi</li>
+                    <li>Stok Senkronizasyonu</li>
+                    <li>Fiyat Senkronizasyonu</li>
+                    <li>Kapsamlı Raporlama</li>
+                    <li>Öncelikli E-posta Desteği</li>
+                </ul>
+                <a href="/odeme.html?plan=price_1RYNS3Kl9OcBA8FDHfbeSmkI" class="card-button">Satın Al</a>
             </div>
-        </section>
-    </main>
 
-    <script>
-        const monthlyBtn = document.getElementById('monthly-btn');
-        const yearlyBtn = document.getElementById('yearly-btn');
-        const priceElements = document.querySelectorAll('.price-value');
-        const periodElements = document.querySelectorAll('.price-period');
+            <!-- Paket 5: Pro -->
+            <div class="pricing-card">
+                <div class="card-header"><h3>Vixify Pro</h3></div>
+                <div class="card-price"><sup>€</sup>399<span>/ay</span></div>
+                <ul class="card-features">
+                    <li>50.000 Ürün Takibi</li>
+                    <li>Stok Senkronizasyonu</li>
+                    <li>Fiyat Senkronizasyonu</li>
+                    <li>Detaylı Raporlama</li>
+                    <li>7/24 E-posta Desteği</li>
+                </ul>
+                <a href="/odeme.html?plan=price_1RYNSKKl9OcBA8FDbsVfpW3p" class="card-button">Satın Al</a>
+            </div>
+            
+            <!-- Paket 6: Enterprise -->
+            <div class="pricing-card">
+                <div class="card-header"><h3>Vixify Enterprise</h3></div>
+                <div class="card-price price-text">
+                    Özel Çözümler
+                </div>
+                <ul class="card-features">
+                    <li>50.000+ Ürün Takibi</li>
+                    <li>Stok Senkronizasyonu</li>
+                    <li>Fiyat Senkronizasyonu</li>
+                    <li>Özel Entegrasyonlar</li>
+                    <li>Kişisel Hesap Yöneticisi</li>
+                </ul>
+                <a href="mailto:info@vixify.net" class="card-button">İletişime Geç</a>
+            </div>
 
-        function togglePricing(period) {
-            monthlyBtn.classList.toggle('active', period === 'monthly');
-            yearlyBtn.classList.toggle('active', period === 'yearly');
-
-            priceElements.forEach(price => {
-                const monthlyPrice = price.getAttribute('data-price-monthly');
-                const yearlyPrice = price.getAttribute('data-price-yearly');
-                
-                if (period === 'monthly') {
-                    price.textContent = monthlyPrice;
-                } else {
-                    price.textContent = yearlyPrice;
-                }
-            });
-
-            periodElements.forEach(p => {
-                p.textContent = period === 'monthly' ? '/ay' : '/yıl';
-            });
-        }
-
-        monthlyBtn.addEventListener('click', () => togglePricing('monthly'));
-        yearlyBtn.addEventListener('click', () => togglePricing('yearly'));
-    </script>
+        </main>
+    </div>
 
 </body>
 </html>
