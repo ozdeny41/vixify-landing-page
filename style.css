@@ -1,13 +1,13 @@
-/* Kök Değişkenler (Renk Paleti) */
+/* Kök Değişkenler (Açık Renk Paleti) */
 :root {
-    --bg-dark: #111827; /* Ana arka plan rengi */
-    --bg-light: #1F2937; /* Kart arka plan rengi */
-    --border-color: #374151; /* Kenarlık rengi */
-    --primary-accent: #38BDF8; /* Ana vurgu rengi (canlı mavi) */
-    --primary-gradient: linear-gradient(90deg, #38BDF8 0%, #6366F1 100%);
-    --text-primary: #F9FAFB; /* Ana metin rengi (neredeyse beyaz) */
-    --text-secondary: #9CA3AF; /* İkincil, daha soluk metin rengi */
-    --glow-color: rgba(56, 189, 248, 0.3); /* Popüler kart parlama rengi */
+    --bg-main: #F8F9FA;          /* Ana arka plan (çok açık gri) */
+    --bg-card: #FFFFFF;          /* Kart arka planı (beyaz) */
+    --border-color: #DEE2E6;     /* Kenarlık rengi */
+    --primary-accent: #6366F1;   /* Ana vurgu rengi (canlı mor/mavi) */
+    --primary-gradient: linear-gradient(90deg, #6366F1 0%, #8B5CF6 100%);
+    --text-primary: #212529;     /* Ana metin rengi (koyu gri) */
+    --text-secondary: #6C757D;   /* İkincil, daha soluk metin rengi */
+    --glow-color: rgba(99, 102, 241, 0.2); /* Popüler kart için hafif gölge/parlama */
 }
 
 /* Genel Stiller ve Sıfırlama */
@@ -19,7 +19,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-dark);
+    background-color: var(--bg-main);
     color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -28,10 +28,10 @@ body {
 
 /* Navigasyon Barı Stilleri */
 .main-nav {
-    background-color: rgba(17, 24, 39, 0.8);
+    background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
-    padding: 1rem 0; /* Dikey boşluk logonun yeni boyutuna göre ayarlandı */
+    padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -40,7 +40,7 @@ body {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0; /* İç boşluk kaldırıldı */
+    padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,7 +53,7 @@ body {
 }
 
 .nav-logo .logo-image {
-    height: 192px; /* Logo boyutu 2 katına çıkarıldı */
+    height: 192px;
     width: auto;
 }
 
@@ -94,6 +94,7 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
+    padding-right: 2rem; /* Butonların sağda boşluk bırakması için */
 }
 
 .nav-button-secondary {
@@ -108,7 +109,7 @@ body {
 
 .nav-button-secondary:hover {
     color: var(--text-primary);
-    background-color: var(--bg-light);
+    background-color: #E9ECEF;
 }
 
 .nav-button-primary {
@@ -123,7 +124,7 @@ body {
 
 .nav-button-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Ana İçerik Stilleri */
@@ -160,21 +161,19 @@ body {
 }
 
 .pricing-card {
-    background-color: var(--bg-light);
+    background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 2.5rem;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.04);
 }
 
 .pricing-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    border-color: var(--primary-accent);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.07);
 }
 
 .card-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
@@ -185,7 +184,7 @@ body {
     font-size: 1.5rem;
     font-weight: 500;
     color: var(--text-secondary);
-    min-height: 58px; /* Fiyat alanı ile aynı yükseklikte olması için */
+    min-height: 58px;
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
@@ -203,19 +202,22 @@ body {
     border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
-    background-color: var(--border-color);
+    background-color: var(--bg-main);
     color: var(--text-primary);
+    border: 1px solid var(--border-color);
 }
 .card-button:hover {
-    background-color: #4b5563; /* Daha koyu gri */
+    background-color: #E9ECEF;
+    border-color: #ADB5BD;
 }
 .card-button.primary {
     background: var(--primary-gradient);
     color: #fff;
+    border: none;
 }
 .card-button.primary:hover {
     transform: scale(1.02);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
 /* Popüler Kart Özel Stilleri */
@@ -238,7 +240,7 @@ body {
 
 /* Mobil Uyum (Responsive) */
 @media (max-width: 992px) {
-    .nav-menu, .nav-actions { display: none; } /* Tablette menüyü ve butonları gizle */
+    .nav-menu, .nav-actions { display: none; }
     .page-header h1 { font-size: 2.5rem; }
 }
 
