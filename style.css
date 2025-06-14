@@ -1,40 +1,249 @@
-/* ... mevcut stil kurallarınız ... */
+/* Kök Değişkenler (Açık Renk Paleti) */
+:root {
+    --bg-main: #F8F9FA;
+    --bg-card: #FFFFFF;
+    --border-color: #DEE2E6;
+    --primary-accent: #6366F1;
+    --primary-gradient: linear-gradient(90deg, #6366F1 0%, #8B5CF6 100%);
+    --text-primary: #212529;
+    --text-secondary: #6C757D;
+    --glow-color: rgba(99, 102, 241, 0.2);
+}
 
-/* Eklenen yeni stiller */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+}
+
+.site-header {
+    padding: 2rem 0;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 .logo-container.align-left {
     text-align: left;
     margin-left: 2rem;
     margin-bottom: 0;
 }
 
-.full-width-nav {
-    width: 100%;
-    background-color: var(--bg-card);
-    padding: 0.75rem 2rem;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    border-radius: 0;
-}
-
-.nav-container.spaced {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* .popular-badge tamamen kaldırıldığından CSS etkisi opsiyoneldir */
-.popular-badge {
-    display: none;
-}
-
-/* Logo boyutunu sabit tutmak için istersen ekleyebilirsin */
 .logo-image {
     height: 128px;
     width: auto;
 }
 
-/* Mobilde eski navbar gizleme davranışı korunabilir veya uyarlanabilir */
+.main-nav {
+    width: fit-content;
+    margin: 0 auto;
+    background-color: var(--bg-card);
+    border-radius: 99px;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.main-nav.full-width-nav {
+    width: 100%;
+    border-radius: 0;
+    padding: 0.75rem 2rem;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-container.spaced {
+    justify-content: space-between;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 0.25rem 0.5rem;
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+}
+
+.nav-link.active {
+    color: var(--primary-accent);
+    font-weight: 600;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-left: 1px solid var(--border-color);
+    padding-left: 1.5rem;
+}
+
+.nav-button-secondary {
+    background: transparent;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-button-secondary:hover {
+    color: var(--text-primary);
+    background-color: #E9ECEF;
+}
+
+.nav-button-primary {
+    background: var(--primary-gradient);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    margin-bottom: 1rem;
+}
+
+.page-header .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.pricing-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+    position: relative;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.07);
+}
+
+.card-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+.card-description { color: var(--text-secondary); margin-bottom: 1.5rem; }
+.card-price { font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem; }
+.card-price .price-period { font-size: 1rem; font-weight: 400; color: var(--text-secondary); }
+.card-price-custom {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.feature-list { list-style: none; margin-bottom: 2rem; flex-grow: 1; }
+.feature-list li { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; color: var(--text-secondary); }
+.feature-list li i { color: var(--primary-accent); }
+
+.card-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+.card-button:hover {
+    background-color: #E9ECEF;
+    border-color: #ADB5BD;
+}
+.card-button.primary {
+    background: var(--primary-gradient);
+    color: #fff;
+    border: none;
+}
+.card-button.primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.pricing-card.popular {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 25px var(--glow-color);
+}
+
+.popular-badge {
+    display: none;
+}
+
 @media (max-width: 992px) {
     .nav-menu, .nav-actions {
         display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+    .main-nav {
+        width: 90%;
     }
 }
