@@ -1,3 +1,4 @@
+/* ========== Değişkenler ========== */
 :root {
     --bg-main: #F8F9FA;
     --bg-card: #FFFFFF;
@@ -9,6 +10,7 @@
     --glow-color: rgba(99, 102, 241, 0.2);
 }
 
+/* ========== Genel Ayarlar ========== */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -22,10 +24,11 @@ body {
     line-height: 1.6;
 }
 
+/* ========== Header ========== */
 .site-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center; /* Logo ve butonlar aynı hizada */
     padding: 1rem 2rem 0 2rem;
 }
 
@@ -53,13 +56,15 @@ body {
     font-weight: 600;
     text-decoration: none;
     display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
 }
 
 .header-button-secondary {
     background: transparent;
     color: var(--text-secondary);
     border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
 }
 
 .header-button-secondary:hover {
@@ -70,7 +75,6 @@ body {
 .header-button-primary {
     background: var(--primary-gradient);
     color: #fff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: none;
 }
 
@@ -79,6 +83,7 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* ========== Navigasyon ========== */
 .main-nav {
     width: fit-content;
     margin: 1rem auto 0 auto;
@@ -118,12 +123,14 @@ body {
     font-weight: 600;
 }
 
+/* ========== İçerik Ana Alanı ========== */
 .content-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
 }
 
+/* Başlık alanı */
 .page-header {
     text-align: center;
     margin-bottom: 4rem;
@@ -143,6 +150,7 @@ body {
     margin: 0 auto;
 }
 
+/* ========== Fiyatlandırma Kartları ========== */
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -217,6 +225,7 @@ body {
     color: var(--primary-accent);
 }
 
+/* Butonlar */
 .card-button {
     display: block;
     width: 100%;
@@ -229,6 +238,8 @@ body {
     background-color: var(--bg-main);
     color: var(--text-primary);
     border: 1px solid var(--border-color);
+    cursor: pointer;
+    user-select: none;
 }
 
 .card-button:hover {
@@ -247,15 +258,13 @@ body {
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
+/* Popüler plan için ekstra vurgu */
 .pricing-card.popular {
     border-color: var(--primary-accent);
     box-shadow: 0 0 25px var(--glow-color);
 }
 
-.popular-badge {
-    display: none;
-}
-
+/* Responsive - küçük ekranlarda menüyü gizle */
 @media (max-width: 992px) {
     .nav-menu {
         display: none;
@@ -265,6 +274,7 @@ body {
     }
 }
 
+/* Responsive - mobilde fiyatlandırma tek sütun */
 @media (max-width: 768px) {
     .pricing-grid {
         grid-template-columns: 1fr;
