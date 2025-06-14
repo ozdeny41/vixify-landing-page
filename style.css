@@ -27,17 +27,13 @@ body {
 
 .site-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 2rem 0;
+    padding: 1rem 2rem 0 2rem;
 }
 
 .logo-container {
     text-align: left;
-    align-self: flex-start;
-    margin-left: 2rem;
 }
 
 .logo-image {
@@ -45,9 +41,45 @@ body {
     width: auto;
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header-button-secondary {
+    background: transparent;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.header-button-secondary:hover {
+    color: var(--text-primary);
+    background-color: #E9ECEF;
+}
+
+.header-button-primary {
+    background: var(--primary-gradient);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
 .main-nav {
     width: fit-content;
-    margin: 0 auto;
+    margin: 1rem auto 0 auto;
     background-color: var(--bg-card);
     border-radius: 99px;
     padding: 0.75rem 1rem;
@@ -82,44 +114,6 @@ body {
 .nav-link.active {
     color: var(--primary-accent);
     font-weight: 600;
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-left: 1px solid var(--border-color);
-    padding-left: 1.5rem;
-}
-
-.nav-button-secondary {
-    background: transparent;
-    color: var(--text-secondary);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.nav-button-secondary:hover {
-    color: var(--text-primary);
-    background-color: #E9ECEF;
-}
-
-.nav-button-primary {
-    background: var(--primary-gradient);
-    color: #fff;
-    text-decoration: none;
-    padding: 0.5rem 1.25rem;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.nav-button-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .content-container {
@@ -224,7 +218,10 @@ body {
 }
 
 @media (max-width: 992px) {
-    .nav-menu, .nav-actions {
+    .nav-menu {
+        display: none;
+    }
+    .header-actions {
         display: none;
     }
 }
