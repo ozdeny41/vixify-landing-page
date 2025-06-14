@@ -4,32 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vixify - Yeni Nesil Fiyatlandırma</title>
-    
-    <!-- CSS Dosyası -->
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- İkonlar için Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-    <!-- Üst Başlık (Logo ve Navigasyon) -->
     <header class="site-header">
-        <!-- Logo Alanı -->
-        <div class="logo-container">
+        <div class="logo-container align-left">
             <a href="/">
                 <img src="vixify-logo.png" alt="Vixify Logosu" class="logo-image">
             </a>
         </div>
-        
-        <!-- Navigasyon Barı -->
-        <nav class="main-nav">
-            <div class="nav-container">
+
+        <nav class="main-nav full-width-nav">
+            <div class="nav-container spaced">
                 <div class="nav-menu">
                     <a href="#" class="nav-link">Ana Sayfa</a>
                     <a href="#" class="nav-link active">Fiyatlandırma</a>
@@ -44,7 +35,6 @@
         </nav>
     </header>
 
-    <!-- Ana İçerik -->
     <main class="content-container">
         <header class="page-header">
             <h1>Size En Uygun Planı Bulun</h1>
@@ -54,8 +44,7 @@
         </header>
 
         <div class="pricing-grid">
-            
-            <!-- Paket 1: Micro -->
+
             <div class="pricing-card">
                 <h3 class="card-title">Micro</h3>
                 <p class="card-description">Yeni başlayanlar için.</p>
@@ -68,7 +57,6 @@
                 <a href="#" class="card-button">Planı Seç</a>
             </div>
 
-            <!-- Paket 2: Starter -->
             <div class="pricing-card">
                 <h3 class="card-title">Starter</h3>
                 <p class="card-description">Küçük ekipler ve büyüyen satıcılar.</p>
@@ -80,10 +68,8 @@
                 </ul>
                 <a href="#" class="card-button">Planı Seç</a>
             </div>
-            
-            <!-- Paket 4: Business (Popüler) -->
-            <div class="pricing-card popular">
-                <div class="popular-badge">POPÜLER</div>
+
+            <div class="pricing-card">
                 <h3 class="card-title">Business</h3>
                 <p class="card-description">En iyi değer ve özellikler.</p>
                 <div class="card-price">€199 <span class="price-period">/ ay</span></div>
@@ -96,7 +82,6 @@
                 <a href="#" class="card-button primary">Hemen Başla</a>
             </div>
 
-            <!-- Paket 3: Growth -->
             <div class="pricing-card">
                 <h3 class="card-title">Growth</h3>
                 <p class="card-description">Büyüme odaklı satıcılar.</p>
@@ -109,8 +94,7 @@
                 <a href="#" class="card-button">Planı Seç</a>
             </div>
 
-             <!-- Paket 5: Pro -->
-             <div class="pricing-card">
+            <div class="pricing-card">
                 <h3 class="card-title">Pro</h3>
                 <p class="card-description">Yüksek hacimli operasyonlar.</p>
                 <div class="card-price">€399 <span class="price-period">/ ay</span></div>
@@ -123,8 +107,7 @@
                 <a href="#" class="card-button">Planı Seç</a>
             </div>
 
-             <!-- Paket 6: Enterprise -->
-             <div class="pricing-card">
+            <div class="pricing-card">
                 <h3 class="card-title">Enterprise</h3>
                 <p class="card-description">Özel ihtiyaçlar ve büyük ekipler.</p>
                 <div class="card-price-custom">Özel Fiyatlandırma</div>
@@ -135,7 +118,7 @@
                 </ul>
                 <a href="mailto:info@vixify.net" class="card-button">İletişime Geç</a>
             </div>
-            
+
         </div>
     </main>
 
