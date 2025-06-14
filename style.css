@@ -26,18 +26,18 @@ body {
 }
 
 .site-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
     padding: 2rem 0;
 }
 
 .logo-container {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.logo-container.align-left {
     text-align: left;
+    align-self: flex-start;
     margin-left: 2rem;
-    margin-bottom: 0;
 }
 
 .logo-image {
@@ -54,21 +54,11 @@ body {
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
 
-.main-nav.full-width-nav {
-    width: 100%;
-    border-radius: 0;
-    padding: 0.75rem 2rem;
-}
-
 .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-}
-
-.nav-container.spaced {
-    justify-content: space-between;
 }
 
 .nav-menu {
